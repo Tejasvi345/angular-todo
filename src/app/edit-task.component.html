@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <h2>{{ mode === "edit" ? "Edit Task" : "New Task" }}</h2>
+
+    <div class="form-field">
+      <label for="assignedTo">Assigned To</label><br />
+      <select id="assignedTo" [(ngModel)]="task.assignedTo" name="assignedTo" required>
+        <option *ngFor="let user of users" [value]="user">
+          {{ user }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="status">Status</label><br />
+      <select id="status" [(ngModel)]="task.status" name="status" required>
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="priority">Priority</label><br />
+      <select id="priority" [(ngModel)]="task.priority" name="priority" required>
+        <option value="Normal">Normal</option>
+        <option value="High">High</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="dueDate">Due Date</label><br />
+      <input type="date" id="dueDate" [(ngModel)]="task.dueDate" name="dueDate" required/>
+    </div>
+  
+   <div class="form-field">
+     <label for="description">Description</label><br />
+     <textarea id="description" [(ngModel)]="task.description" name="description">
+     </textarea>
+   </div>
+
+   <div class="modal-actions">
+     <button class="button-cancel" (click)="closeModal()">Cancel</button>
+     <button (click)="onSave()">Save</button>
+   </div>
+  </div>
+</div>
